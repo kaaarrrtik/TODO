@@ -1,0 +1,70 @@
+{% extends 'base.html' %} {% block body %}
+<div class="top">
+  <header>TODO</header>
+
+  <form action="/newTodo" method="POST">
+    <label for="title" class="form-lable">Todo Title</label>
+    <input
+      type="text"
+      class="todo-input"
+      name="title"
+      id="title"
+      aria-describedby="emailHelp"
+      required
+    />
+
+    <label for="desc" class="form-lable">Todo Description</label>
+    <input type="text" name="desc" class="todo-input" id="desc" />
+
+    <div class="form-div">
+      <button type="submit" class="form-btn">
+        <i class="fa-solid fa-circle-plus"></i>
+      </button>
+    </div>
+  </form>
+</div>
+
+<div class="todo-container">
+  {% if allTodo|length==0 %}
+  <div class="EmptyTodo" role="alert">
+    No Todo found . Add your first Todo
+  </div>
+  {% else %}
+  <table>
+    <thead>
+      <tr class="todo-head">
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Time</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody class='table-body'>
+      {% for todo in allTodo %}
+      <tr class="todo">
+        <td>{{todo.title}}</td>
+        <td>{{todo.desc}}</td>
+        <td>{{todo.date_created}}</td>
+        <td>
+          <a href="/delete/{{todo.sno}}">
+            <button class="trash-btn">
+              <i class="fa-solid fa-trash"></i>
+            </button></a>
+
+          <a href="/update/{{todo.sno}}">
+            <button class="edit-btn">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+          </a>
+
+          <button class="complete-btn">
+            <i class="fa-solid fa-check"></i>
+          </button>
+        </td>
+      </tr>
+      {% endfor %} 
+      {% endif %}
+    </tbody>
+  </table>
+</div>
+{% endblock body %}
