@@ -1,4 +1,4 @@
-## Target
+## Targets
 A CRUD (Create Read Update Delete) based Todo List . A full-stack project for tasks you need to complete , for things that you want to do and organize your schedule .Client side developed by using HTML , CSS and JavaScript to ease the process for the user-end . Flask web framework is used server-end along with Flask-SQLAlchemy for data handling 
 
 
